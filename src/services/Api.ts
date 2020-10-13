@@ -1,3 +1,4 @@
+import { UserParams } from './../containers/Dashboard/Dashboard/types';
 import config from "../config/app";
 import requestConfig from "../config/request";
 import * as API from "../utils/api-helper";
@@ -11,22 +12,27 @@ const API_ENDPOINT = isProd
   export const login = (params: {}) => {
     const url = `${API_ENDPOINT}/login`;
     const config = { ...requestConfig };
-    
+
     config.headers = {
       "Content-Type": "application/x-www-form-urlencoded",
       Accept: "application/json",
     };
-  
+
     return API.post(url, params, config);
   };
-  
+
   export const logout = () => {
     const url = `${API_ENDPOINT}/logout`;
     return API.get(url);
   };
-  
+
   /*testing-500-error*/
   export const test = () => {
     const url =`${API_ENDPOINT}`;
+    return API.get(url)
+  }
+
+  export const users =(params:UserParams)=>{
+    const url =`${API_ENDPOINT}/users?page=${params.page}`;
     return API.get(url)
   }
