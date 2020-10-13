@@ -95,7 +95,7 @@ class Dashboard extends Component<AllProps, State> {
               />
             </div>
           </Container>
-          {users !== null && users.data && <User users={users} />}
+          {users !== null && users.data && <User users={users} check={this.state.checked} />}
         </div>
       </Fragment>
     );
